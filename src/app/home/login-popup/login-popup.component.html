@@ -1,0 +1,66 @@
+
+<div class="overlay" id="overlay">
+    <div class="popup" id="popup">
+        <div class="decorative-shape shape-1"></div>
+        <div class="decorative-shape shape-2"></div>
+        <div class="discount-badge">{{isLoginMode? "Login":"Register"}}</div>
+        <button class="close-button" (click)="hidePopup()">&times;</button>
+        <div class="popup-content">
+            <h2>Experience the Adventure</h2>
+            <p *ngIf="isLoginMode">Embark on thrilling journeys, explore uncharted territories, embrace excitement, conquer challenges, and discover new horizons. Adventure awaits those seeking unforgettable experiences and endless possibilities.</p>
+                <!-- login form -->
+            <form id="leadForm" [formGroup]="loginForm" *ngIf="isLoginMode" (ngSubmit)="loginUser()">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="Enter your email" autocomplete="new-email" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="Enter your password" autocomplete="new-password" formControlName="password">
+                </div>
+                <button type="submit" class="submit-button">Start Your Adventure Today</button>
+            </form>
+            <!-- register form -->
+            <form id="registerForm" [formGroup]="registerForm" *ngIf="!isLoginMode" (ngSubmit)="registerUser()">
+                <div class="form-group">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" required placeholder="Enter your full name" formControlName="fullName">
+                    <p class="errMsg" *ngIf="RF('fullName').invalid && RF('fullName').touched">
+                        <span *ngIf="RF('fullName').hasError('required')">Full Name is required</span>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="Enter your email" autocomplete="new-email" formControlName="email">
+                    <p class="errMsg" *ngIf="RF('email').invalid && RF('email').touched">
+                        <span *ngIf="RF('email').hasError('required')">Email is required</span>
+                        <span *ngIf="RF('email').hasError('email')">Invalid email</span>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="text" id="mobile" required placeholder="Enter your mobile number" formControlName="mobileNumber">
+                    <p class="errMsg" *ngIf="RF('mobileNumber').invalid && RF('mobileNumber').touched">
+                        <span *ngIf="RF('mobileNumber').hasError('required')">Mobile Number is required</span>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="Enter your password" autocomplete="new-password" formControlName="password">
+                    <p class="errMsg" *ngIf="RF('password').invalid && RF('password').touched">
+                        <span *ngIf="RF('password').hasError('required')">Password is required</span>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="conf-password">Confirm Password</label>
+                    <input type="password" id="conf-password" required placeholder="Enter your confirm password" autocomplete="new-conf-password" formControlName="confPassword">
+                    <p class="errMsg" *ngIf="RF('confPassword').invalid && RF('confPassword').touched">
+                        <span *ngIf="RF('confPassword').hasError('required')">Confirm Password is required</span>
+                    </p>
+                </div>
+                <button type="submit" class="submit-button">Set off on an exciting journey</button>
+            </form>
+        </div>
+        <p class="ac-re">{{!isLoginMode?"You have an account":"You don't have account"}} <span (click)="toggleRegLogIn()">{{!isLoginMode?"login here":"register here"}}</span></p>
+    </div>
+</div>

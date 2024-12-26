@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
+
+:root {
+  --primary: #094b65;
+    // --primary-gradient: linear-gradient(135deg, #4F46E5, #7C3AED);
+    --primary-gradient: linear-gradient(135deg, #009a68, #026244);
+    // --secondary-gradient: linear-gradient(135deg, #3B82F6, #2563EB);
+    --secondary-gradient: linear-gradient(135deg, #009a68, #026244);
+    --text-color: #1F2937;
+    --bg-color: #F3F4F6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  background: #fff;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #769d02; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #769d02; 
+}
