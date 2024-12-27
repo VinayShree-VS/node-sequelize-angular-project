@@ -83,3 +83,8 @@
 [27/12/2024 16:39:06] POST - /api/v1/create-note New Request Recived 
 [27/12/2024 16:39:25] POST - /api/v1/create-note New Request Recived 
 [27/12/2024 16:40:06] POST - /api/v1/create-note New Request Recived 
+[27/12/2024 16:43:34] GET - /api/v1/get-all-note New Request Recived 
+[27/12/2024 16:43:45] GET - /api/v1/get-single-note/6721f3f0-a62d-4523-b5ed-7d7d2d781cbf New Request Recived 
+[27/12/2024 16:43:59] PUT - /api/v1/update-note/6721f3f0-a62d-4523-b5ed-7d7d2d781cbf New Request Recived 
+[27/12/2024 16:44:11] DELETE - /api/v1/delete-note/6721f3f0-a62d-4523-b5ed-7d7d2d781cbf New Request Recived 
+[27/12/2024 16:44:15] GET - /api/v1/get-all-note New Request Recived 
