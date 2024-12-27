@@ -6,7 +6,9 @@ const {generateToken} = require("../utility/jwt");
 
   const handleGetAllUsers = async (req, res) => {
     try {
-      const users = await User.findAll();
+      const users = await User.findAll({
+        attributes: { exclude: ['_tokens', 'password', 'confPassword'] } // Remove sensitive fields
+      }); 
       return res.status(200).json({ code: 200, data: users });
     } catch (error) {
       console.error(error);
@@ -57,13 +59,18 @@ const {generateToken} = require("../utility/jwt");
         return res.status(400).json({ code: 400, message: 'No file uploaded' });
       };
       const user = await User.findOne({
-        where: { id: parseInt(req.params.id), id: req.user.userId },
+        where: {
+          [Op.and]: [
+            { id: req.params.id },
+            { id: req.user.userId }
+          ]
+        }
       });
       if (!user) {
         return res.status(404).json({ code: 404, message: 'User not found' });
       };
 
-      await User.update({ profileImage: req.file.path }, { where: { id: parseInt(req.params.id) } });
+      await User.update({ profileImage: req.file.path }, { where: { id:req.params.id } });
       const profileImage = `${process.env.DEV_BASE_URL}/${req.file.path}`;
   
       return res.status(200).json({ code: 200,message: 'Profile image updated successfully',data: { profileImage }});
@@ -76,14 +83,23 @@ const {generateToken} = require("../utility/jwt");
   const handleGetUserById = async (req, res) => {
     try {
       const user = await User.findOne({
-        where: { id: parseInt(req.params.id), id: req.user.userId },
-        attributes: { exclude: ['_tokens', 'password', 'confPassword'] }, // remove sensitive fields
-      });      
-  
-      if (!user) {
-        return res.status(404).json({ code: 404, message: 'User not found' });
-      };
-      return res.status(200).json({code: 200,message: 'Data retrieved successfully', data: user});
+        where: {
+          [Op.and]: [
+            { id: req.params.id },
+            { id: req.user.userId }
+          ]
+        },
+        attributes: { exclude: ['_tokens', 'password', 'confPassword'] } // Remove sensitive fields
+      });
+      console.log(user);
+      
+      if (user) {
+        const profileImage = `${process.env.DEV_BASE_URL}/${user.profileImage}`;
+        user.profileImage = profileImage;
+        return res.status(200).json(user);
+      } else {
+        return res.status(404).json({ message: "User not found or unauthorized" });
+      }
     } catch (error) {
       console.error("Error during fetching user data:", error);
       return res.status(500).json({ code: 500, message: "Internal Server Error", details: error.message });
@@ -93,7 +109,12 @@ const {generateToken} = require("../utility/jwt");
   const handleUpdateUserById = async (req, res) => {
     try {
       const [updated] = await User.update(req.body, {
-        where: { id: parseInt(req.params.id) },
+        where: {
+          [Op.and]: [
+            { id: req.params.id },
+            { id: req.user.userId }
+          ]
+        },
       });
       console.log(updated);
       
@@ -111,7 +132,12 @@ const {generateToken} = require("../utility/jwt");
   const handleDeleteUserById = async (req, res) => {
     try {
       const deleted = await User.destroy({
-        where: { id: parseInt(req.params.id) },
+        where: {
+          [Op.and]: [
+            { id: req.params.id },
+            { id: req.user.userId }
+          ]
+        },
       });
   
       if (!deleted) {

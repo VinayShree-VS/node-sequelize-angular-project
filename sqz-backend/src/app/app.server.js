@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended:false}));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
 const db = require("./models/index");
 const cors = require('cors');
 

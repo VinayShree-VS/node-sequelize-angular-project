@@ -1,10 +1,12 @@
-module.exports = (sequelize, Sequelize, DataTypes) => {
-  const User = sequelize.define(
-    "user",
-    {
+'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('users', {
       id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
       fullName: {
@@ -24,9 +26,8 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           notEmpty: { msg: "Email is required" },
           isEmail: { msg: "Email must be valid" },
         },
-      },
-      mobileNumber: {
-        type: DataTypes.BIGINT,
+      },mobileNumber: {
+        type: DataTypes.BIGINT, // Use BIGINT for mobile numbers
         allowNull: false,
         validate: {
           notNull: { msg: "Mobile number is required" },
@@ -41,6 +42,14 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
           notEmpty: { msg: "Password is required" },
         },
       },
+      confPassword: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: { msg: "Confirm password is required" },
+          notEmpty: { msg: "Confirm password is required" },
+        },
+      },
       gender: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -50,11 +59,11 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         },
       },
       roles: {
-        type: DataTypes.JSON,
+        type: DataTypes.JSON, // Store roles as an array of strings in JSON format
         defaultValue: ["Admin"],
       },
       _tokens: {
-        type: DataTypes.JSON,
+        type: DataTypes.JSON, // Use JSON for tokens
         defaultValue: [],
       },
       profileImage: {
@@ -72,14 +81,18 @@ module.exports = (sequelize, Sequelize, DataTypes) => {
         type: DataTypes.DATE,
         defaultValue: Sequelize.NOW,
       },
-    },
-    {
+
+
+    },{
+      // Options
       timestamps: true,
       underscored: true,
       createdAt: "created_at",
       updatedAt: "updated_at",
-    }
-  );
-
-  return User;
+    });
+  },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('users');
+  },
 };
+
