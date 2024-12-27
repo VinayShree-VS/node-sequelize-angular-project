@@ -2,15 +2,14 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const {logReqRes} = require("./middlewares/logReqRes");
-
 const user = require("./routes/user");
 const loginuser = require("./routes/auth");
 const notes = require("./routes/notes");
 const {auth} = require("./middlewares/auth");
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.set("view engine","ejs");
-app.set("views",path.resolve("./views"));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const db = require("./models/index");
