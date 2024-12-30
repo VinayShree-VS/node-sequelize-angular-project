@@ -1,11 +1,21 @@
 <header id="header">
     <a href="#" class="logo">Forest</a>
     <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#destination">Destination</a></li>
-      <li><a href="#">Contact</a></li>
+      <li>
+        <a [routerLink]="['/']" fragment="" [ngClass]="{'active': activeFragment === ''}">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/']" fragment="about" [ngClass]="{'active': activeFragment === 'about'}">About</a>
+      </li>
+      <li>
+        <a [routerLink]="['/']" fragment="destination" [ngClass]="{'active': activeFragment === 'destination'}">Destination</a>
+      </li>
+      <li>
+        <a [routerLink]="['/']" fragment="contact" [ngClass]="{'active': activeFragment === 'contact'}">Contact</a>
+      </li>
     </ul>
+    
+    
   </header>
 
   <Section>

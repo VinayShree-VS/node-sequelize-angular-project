@@ -1,15 +1,29 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { LoginPopupComponent } from './login-popup/login-popup.component';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [LoginPopupComponent],
+  imports: [LoginPopupComponent,RouterLink,NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   openLoginPopup:boolean = false;
-  ngOnInit(): void {}
+  activeFragment:any = "";
+
+  constructor(private ActivatedRoute:ActivatedRoute){}
+  ngOnInit(): void {
+    this.ActivatedRoute.fragment.subscribe(
+      (res)=>{
+        if(res){
+          this.activeFragment = res;
+          this.scrollSmooth(res);
+        }
+      }
+    )
+  }
   ngAfterViewInit(): void {
     if (typeof document !== 'undefined') {
       let text: any = document.getElementById('text');
@@ -35,6 +49,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
         header.style.top = value * 0.5 + 'px';
       });
     }
+  }
+
+  scrollSmooth(id:any){
+    setTimeout(()=>{
+      const element = document.getElementById(id) as HTMLElement;
+      element.scrollIntoView({ behavior: 'smooth' });
+    },500);
   }
 
   loginAndExplore(){
