@@ -131,3 +131,28 @@ footer a {
   text-decoration: none;
   color: #fff;
 }
+
+
+.makeSticky {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  background: #fff !important;
+  padding: 10px 100px !important;
+  transform-origin: top; /* Set the transform origin to the top */
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes moveb {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Add animation when it becomes sticky */
+.makeSticky.animate {
+  animation: moveb 0.2s ease-in-out;
+}

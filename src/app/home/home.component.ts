@@ -12,7 +12,7 @@ import { NgClass } from '@angular/common';
 export class HomeComponent implements OnInit, AfterViewInit {
   openLoginPopup:boolean = false;
   activeFragment:any = "";
-
+  isSticky:boolean = false;
   constructor(private ActivatedRoute:ActivatedRoute){}
   ngOnInit(): void {
     this.ActivatedRoute.fragment.subscribe(
@@ -48,6 +48,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
         forest.style.top = value * 0.25 + 'px';
         header.style.top = value * 0.5 + 'px';
       });
+
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if(scrollTop >= 900){
+          this.isSticky = true;
+        }else{
+          this.isSticky = false;
+        }
+      });
+      
+      
     }
   }
 
