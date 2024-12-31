@@ -95,7 +95,7 @@ export class LoginPopupComponent implements OnChanges {
       (res)=>{
         this.loginForm.reset();
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Logged in successful' });
-        this.router.navigate(['workspace']);
+        this.router.navigate(['admin']);
       },(err)=>{
         console.log(err);
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong, please try again' });

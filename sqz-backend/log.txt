@@ -88,3 +88,7 @@
 [27/12/2024 16:43:59] PUT - /api/v1/update-note/6721f3f0-a62d-4523-b5ed-7d7d2d781cbf New Request Recived 
 [27/12/2024 16:44:11] DELETE - /api/v1/delete-note/6721f3f0-a62d-4523-b5ed-7d7d2d781cbf New Request Recived 
 [27/12/2024 16:44:15] GET - /api/v1/get-all-note New Request Recived 
+[31/12/2024 11:18:27] POST - /api/v1/auth/login-user New Request Recived 
+[31/12/2024 11:18:40] POST - /api/v1/auth/login-user New Request Recived 
+[31/12/2024 11:20:02] POST - /api/v1/ragister-user New Request Recived 
+[31/12/2024 11:20:06] POST - /api/v1/auth/login-user New Request Recived 
