@@ -39,3 +39,22 @@ body{
 .ad-left-menu{
     background-color: #fff;
 }
+
+.ad-pe-menu{
+    display: block;
+    background: #094b65;
+    color: #fff;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+
+.menu-icon{
+    color: #fff;
+}
+
+
+:host::ng-deep .p-panelmenu-item:not(.ng-animating) {
+    margin-top: 5px !important;
+}

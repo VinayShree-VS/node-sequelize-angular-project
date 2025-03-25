@@ -16,6 +16,14 @@ const db = require("./models/index");
 const cors = require('cors');
 
 
+// Ensure static files are served correctly under "/react"
+app.use("/react", express.static(path.join(__dirname, "../../dist"), { extensions: ["html", "css", "js"] }));
+
+// Catch-all route to serve index.html for SPA
+app.get("/react/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../dist", "index.html"));
+});
+
 app.use(cors({
     origin: 'http://localhost:4200',
     methods: ['GET', 'POST', 'PUT', 'DELETE', "PATCH"],
