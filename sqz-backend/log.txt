@@ -426,3 +426,13 @@
 [25/03/2025 12:05:10] GET - / New Request Recived 
 [25/03/2025 12:05:48] GET - /admin New Request Recived 
 [25/03/2025 12:13:58] GET - / New Request Recived 
+[25/03/2025 14:44:27] POST - /api/v1/auth/login-user New Request Recived 
+[25/03/2025 14:45:00] GET - /api/v1/get-all-note New Request Recived 
+[25/03/2025 14:45:04] GET - /api/v1/get-single-note/2 New Request Recived 
+[25/03/2025 14:45:18] GET - /api/v1/get-all-note New Request Recived 
+[25/03/2025 14:45:21] PUT - /api/v1/update-note/1 New Request Recived 
+[25/03/2025 14:45:36] POST - /api/v1/create-note New Request Recived 
+[25/03/2025 14:45:51] GET - /api/v1/get-single-note/60f3461f-c1be-4781-be62-36f03c139e19 New Request Recived 
+[25/03/2025 14:46:00] GET - /api/v1/get-all-note New Request Recived 
+[25/03/2025 14:46:24] PUT - /api/v1/update-note/60f3461f-c1be-4781-be62-36f03c139e19 New Request Recived 
+[26/03/2025 11:45:47] POST - /api/v1/auth/login-user New Request Recived 

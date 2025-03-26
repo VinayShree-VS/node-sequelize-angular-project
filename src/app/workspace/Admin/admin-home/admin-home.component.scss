@@ -58,3 +58,7 @@ body{
 :host::ng-deep .p-panelmenu-item:not(.ng-animating) {
     margin-top: 5px !important;
 }
+
+:host::ng-deep p-panelmenu-sub .p-panelmenu-submenu .p-panelmenu-item .p-panelmenu-item-content .ad-pe-menu{
+    background: #247291 !important;
+}
