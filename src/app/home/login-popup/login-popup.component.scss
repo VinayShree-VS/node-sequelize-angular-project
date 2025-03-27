@@ -270,11 +270,11 @@ body {
 .errMsg{
     line-height: 0;
     position: relative;
-    color: #eb0000;
     span{
         position: absolute;
-        top: 12px;
+        // top: 12px;
         left: 15px;
         font-size: 13px;
+        color: #eb0000;
     }
 }
